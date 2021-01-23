@@ -7,8 +7,10 @@
  * @param  string  $input
  * @return string
  */
+$input = 'hello_world';
 function snakeCaseToCamelCase(string $input)
 {
+  
 }
 
 /**

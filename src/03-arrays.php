@@ -10,6 +10,7 @@
  */
 function repeatArrayValues(array $input)
 {
+  return array_unique($input);
 }
 
 /**
