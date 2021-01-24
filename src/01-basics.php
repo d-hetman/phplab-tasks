@@ -21,7 +21,9 @@ function getMinuteQuarter(int $minute)
         return "second";
     } elseif ($minute>30 and $minute<=45) {
         return "third";
-    } elseif ($minute>45 and $minute<=59)
+    } elseif ($minute>45 and $minute<=59) {
+        return "fourth";
+    } elseif ($minute==0)
         return "fourth";
 }
 /**
