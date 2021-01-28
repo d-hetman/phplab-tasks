@@ -7,10 +7,12 @@
  * @param  string  $input
  * @return string
  */
-$input = 'hello_world';
 function snakeCaseToCamelCase(string $input)
 {
-  
+    $input = str_replace('_', '', ucwords($input, '_'));
+    $input = lcfirst($input);
+    return $input;
+
 }
 
 /**
@@ -21,8 +23,17 @@ function snakeCaseToCamelCase(string $input)
  * @param  string  $input
  * @return string
  */
-function mirrorMultibyteString(string $input)
-{
+function mirrorMultibyteString(string $input) {
+    $encoding = mb_detect_encoding($input);
+    $length   = mb_strlen($input, $encoding);
+    $reversed = '';
+    while ($length-- > 0) {
+        $reversed .= mb_substr($input, $length, 1, $encoding);
+    }
+    $reversed = explode(" ", $reversed);
+    $reversed = array_reverse($reversed);
+    $reversed = implode(' ', $reversed);
+    return $reversed;
 }
 
 /**
@@ -39,6 +50,16 @@ function mirrorMultibyteString(string $input)
  * @param  string  $noun
  * @return string
  */
-function getBrandName(string $noun)
-{
+function getBrandName(string $noun) {
+    $firstValue = substr($noun, 0, 1);
+    $lastValue = substr($noun, -1);
+    if (($firstValue <=> $lastValue) == 0) {
+        $arr = str_split($noun);
+        $trimmed = array_pop($arr);
+        $str = implode($arr);
+        $band = ucfirst($str . $noun);
+        return ($band);
+    } else {
+        return $noun = "The " . ucfirst($noun);
+    }
 }
