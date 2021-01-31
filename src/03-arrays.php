@@ -10,9 +10,17 @@
  */
 function repeatArrayValues(array $input)
 {
-  return array_unique($input);
+    if (empty($input)) {
+        return $input;
+    }
+    else
+        foreach ($input as $val) {
+            for ($i=0; $i<$val ; $i++) {
+                $result[] = $val;
+            }
+        }
+        return $result;
 }
-
 /**
  * The $input variable contains an array of digits
  * Return the lowest unique value or 0 if there is no unique values or array is empty.
@@ -23,7 +31,20 @@ function repeatArrayValues(array $input)
  */
 function getUniqueValue(array $input)
 {
+    $input = array_count_values($input);
+    if (in_array(1, $input)){
+        $newArr = [];
+        foreach ($input as $key => $value) {
+            if ($value == 1){
+                array_push($newArr, $key);
+            }
+        }
+        return min ($newArr);
+    }else
+        return 0;
+
 }
+
 
 /**
  * The $input variable contains an array of arrays
