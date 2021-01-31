@@ -33,13 +33,13 @@ function getUniqueValue(array $input)
 {
     $input = array_count_values($input);
     if (in_array(1, $input)){
-        $newArr = [];
+        $newArray = [];
         foreach ($input as $key => $value) {
             if ($value == 1){
-                array_push($newArr, $key);
+                array_push($newArray, $key);
             }
         }
-        return min ($newArr);
+        return min ($newArray);
     }else
         return 0;
 
